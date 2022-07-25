@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <link rel="stylesheet" href="{{asset('assets/front-end')}}/assets/custom/app.css">
+    <link rel="stylesheet" href="{{asset('assets/front-end')}}/assets/custom/custom.css">
+    <link rel="stylesheet" href="{{asset('assets/front-end')}}/assets/custom/flickity.min.css">
+
+    <style>
+        .carousel-cell {
+            width: 100%;
+            height: 400px;
+            margin-right: 10px;
+            background: #8C8;
+            border-radius: 5px;
+            counter-increment: gallery-cell;
+        }
+
+        /* cell number */
+        .carousel-cell:before {
+            display: block;
+            text-align: center;
+            content: counter(gallery-cell);
+            line-height: 400px;
+            font-size: 80px;
+            color: white;
+        }
+    </style>
+    <style>
+        .navbar-default {
+            background-image: linear-gradient(to bottom, #1976D2 0%, #64B5F6 100%);
+            background-repeat: repeat-x;
+        }
+
+        .footer {
+            background-image: linear-gradient(to bottom, #1976D2 0%, #64B5F6 100%);
+            background-repeat: repeat-x;
+        }
+
+        .title {
+            background-image: linear-gradient(to bottom, #1976D2 0%, #64B5F6 100%);
+            background-repeat: repeat-x;
+        }
+
+        .subtitle {
+            border-left-color: #5cb1f7;
+        }
+
+        .nav.dinamis li {
+            background-image: linear-gradient(to bottom, #1976D2 0%, #64B5F6 100%);
+            background-repeat: repeat-x;
+            margin: 0px 10px;
+        }
+
+        .nav.dinamis li.active {
+            background-image: linear-gradient(to bottom, #003049 0%, #003049 100%);
+            background-repeat: repeat-x;
+
+        }
+
+        .nav.dinamis li a {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .nav>li>a:focus,
+        .nav>li>a:hover {
+            background-color: #003049;
+        }
+
+        .pagination>.active>a,
+        .pagination>.active>a:focus,
+        .pagination>.active>a:hover,
+        .pagination>.active>span,
+        .pagination>.active>span:focus,
+        .pagination>.active>span:hover {
+            background-color: #E6D300;
+            border-color: #E6D300;
+        }
+
+        .pagination>li>a,
+        .pagination>li>span {
+            color: #E6D300;
+        }
+
+        .panel-body.dinamis {
+            background-color: #E6D300;
+        }
+    </style>
+
+    <title>@yield('title')</title>
+</head>
+
+<body style="background-color: #d8dbdb83;">
+    <nav class="navbar navbar-default" style="border-radius: 0">
+        <div class="container" style="position: relative">
+            <div class="navbar-header">
+                <a class="navbar-brand" style="padding-top: 0px;" href="{{url('/')}}"><img
+                        src="{{asset('assets/front-end')}}/assets/img/logo-tki.png" alt="LOGO" class="img-responsive pad img-small"></a>
+            </div>
+            <div class="navbar-right right-bottom">
+                <div class="navbar-form">
+                    <form action="http://tkj.smkn1-sby.sch.id/pencarian" method="GET">
+                        <input type="hidden" name="_token" value="oLA5aXtga47WpKVBkPk2YEi2CP7z50cq2wn3eRPP">
+                        <input name="keywords" type="text" placeholder="Cari.." class="form-control">
+                        <button type="submit" class="btn btn-dark"><svg xmlns="http://www.w3.org/2000/svg" width="12"
+                                height="12" fill="currentColor" class="bi bi-search" viewBox="0 0 16 14">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg></button>
+                    </form>
+                    <button type="button" class="navbar-toggle collapsed btn btn-dark" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-list" viewBox="0 0 16 11">
+                            <path fill-rule="evenodd"
+                                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="panel bagi">
+            <div class="panel-body">
+                <nav class="navbar center">
+                    <div class="navbar-inner">
+                        <div class="collapse navbar-collapse p0" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav dinamis">
+                                <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="{{url('/')}}">Beranda</a></li>
+                                <li class=""><a href="{{url('tentang-jurusan')}}">Tentang Jurusan</a></li>
+                                <li class="{{ request()->is('daftar-guru') ? 'active' : '' }}"><a href="{{url('daftar-guru')}}">Guru</a></li>
+                                <li class="{{ request()->is('daftar-siswa') ? 'active' : '' }}"><a href="{{url('daftar-siswa')}}">Siswa</a></li>
+                                <li class="{{ request()->is('daftar-alat') ? 'active' : '' }}"><a href="{{url('daftar-alat')}}">Barang RPL</a></li>
+                                <li class="{{ request()->is('daftar-barang') ? 'active' : '' }}"><a href="{{url('daftar-barang')}}">Barang TKJ</a></li>
+                                <li class="{{ request()->is('daftar-prestasi') ? 'active' : '' }}"><a href="{{url('daftar-prestasi')}}">Prestasi</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="runtext-container">
+                        <div class="main-runtext">
+                            <marquee direction="" onmouseover="this.stop();" onmouseout="this.start();">
+                                <div class="holder">
+                                    <div class="text-container">
+                                        <span style="font-size:16px;color:#003049;font-weight:bold;">&nbsp; &nbsp;
+                                            Selamat Datang di Website Jurusan Teknik Komputer dan Informatika, SMKN 1 Lahat</span>
+                                    </div>
+                                    <div class="text-container">
+                                        <span style="font-size:16px;color:#003049;font-weight:bold;">&nbsp; &nbsp;
+                                            Selamat Datang di Website Jurusan Teknik Komputer dan Informatika, SMKN 1 Lahat</span>
+                                    </div>
+                                    <div class="text-container">
+                                        <span style="font-size:16px;color:#003049;font-weight:bold;">&nbsp; &nbsp;
+                                            Selamat Datang di Website Jurusan Teknik Komputer dan Informatika, SMKN 1 Lahat</span>
+                                    </div>
+                                    <div class="text-container">
+                                        <span style="font-size:16px;color:#003049;font-weight:bold;">&nbsp; &nbsp;
+                                            Selamat Datang di Website Jurusan Teknik Komputer dan Informatika, SMKN 1 Lahat</span>
+                                    </div>
+                                    <div class="text-container">
+                                        <span style="font-size:16px;color:#003049;font-weight:bold;">&nbsp; &nbsp;
+                                            Selamat Datang di Website Jurusan Teknik Komputer dan Informatika, SMKN 1 Lahat</span>
+                                    </div>
+                                    <div class="text-container">
+                                        <span style="font-size:16px;color:#003049;font-weight:bold;">&nbsp; &nbsp;
+                                            Selamat Datang di Website Jurusan Teknik Komputer dan Informatika, SMKN 1 Lahat</span>
+                                    </div>
+                                    <div class="text-container">
+                                        <span style="font-size:16px;color:#003049;font-weight:bold;">&nbsp; &nbsp;
+                                            Selamat Datang di Website Jurusan Teknik Komputer dan Informatika, SMKN 1 Lahat</span>
+                                    </div>
+                                    <div class="text-container">
+                                        <span style="font-size:16px;color:#003049;font-weight:bold;">&nbsp; &nbsp;
+                                            Selamat Datang di Website Jurusan Teknik Komputer dan Informatika, SMKN 1 Lahat</span>
+                                    </div>
+                                    <div class="text-container">
+                                        <span style="font-size:16px;color:#003049;font-weight:bold;">&nbsp; &nbsp;
+                                            Selamat Datang di Website Jurusan Teknik Komputer dan Informatika, SMKN 1 Lahat</span>
+                                    </div>
+                                    <div class="text-container">
+                                        <span style="font-size:16px;color:#003049;font-weight:bold;">&nbsp; &nbsp;
+                                            Selamat Datang di Website Jurusan Teknik Komputer dan Informatika, SMKN 1 Lahat</span>
+                                    </div>
+                                </div>
+                            </marquee>
+                        </div>
+
+                    </div>
+
+                </nav>
+                <div class="row">
+                    <div class="col-md-8">
+                        @yield('konten')
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                
+                                    <div class="row" style="margin: 8px;margin-top: -25px;">
+                                        <h4 class="title"><strong>Berita Terbaru</strong></h4>
+                                        <img src="{{asset('assets/front-end')}}/assets/img/pengumuman.png" width="90" alt=""> <br>
+                                    </div>
+                                    <div class="row" style="margin-left: 18px; margin-right: 18px ;color: black;">
+                                        <div class="sidefont" style="margin-bottom: 5px;">
+                                            <a href="berita/berita1.html"
+                                                style="font-size: 14px !important; color:black !important;"
+                                                title="Pedoman Pelaksanaan Hari Anak Nasional (HAN) 2020"><strong>Juara
+                                                    1 LKS Tingkat Provinsi Sumatera Selatan Bidang Lomba
+                                                    Cyber Security 2021 </strong></a> <br>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-left: 18px; margin-right: 18px ;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11"
+                                            fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                                            <path
+                                                d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" />
+                                            <path
+                                                d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                                        </svg>
+                                        03-12-2021
+                                    </div>
+                                    <hr style="margin-top: 0;">
+                                
+                                <div>
+                                    <div class="row" style="margin: 8px;margin-top: 0;">
+                                        <img src="{{asset('assets/front-end')}}/assets/img/pengumuman.png" width="90" alt=""> <br>
+                                    </div>
+                                    <div class="row" style="margin-left: 18px; margin-right: 18px ;color: black;">
+                                        <div class="sidefont" style="margin-bottom: 5px;">
+                                            <a href="#" style="font-size: 14px !important; color:black !important;"
+                                                title="Pedoman Pelaksanaan Hari Anak Nasional (HAN) 2020"><strong>Pedoman
+                                                    Pelaksanaan Hari Anak Nasional (HAN)
+                                                    2020 </strong></a> <br>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-left: 18px; margin-right: 18px ;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11"
+                                            fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                                            <path
+                                                d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" />
+                                            <path
+                                                d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                                        </svg>
+                                        03-12-2021
+                                    </div>
+                                    <hr style="margin-top: 0;">
+                                </div>
+                                <div>
+                                    <div class="row" style="margin: 8px;margin-top: 0;">
+                                        <img src="{{asset('assets/front-end')}}/assets/img/pengumuman.png" width="90" alt=""> <br>
+                                    </div>
+                                    <div class="row" style="margin-left: 18px; margin-right: 18px ;color: black;">
+                                        <div class="sidefont" style="margin-bottom: 5px;">
+                                            <a href="#" style="font-size: 14px !important; color:black !important;"
+                                                title="Pedoman Pelaksanaan Hari Anak Nasional (HAN) 2020"><strong>Pedoman
+                                                    Pelaksanaan Hari Anak Nasional (HAN)
+                                                    2020 </strong></a> <br>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-left: 18px; margin-right: 18px ;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11"
+                                            fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                                            <path
+                                                d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" />
+                                            <path
+                                                d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                                        </svg>
+                                        03-12-2021
+                                    </div>
+                                    <hr style="margin-top: 0;">
+                                </div>
+                                <div>
+                                    <div class="row" style="margin: 8px;margin-top: 0;">
+                                        <img src="{{asset('assets/front-end')}}/assets/img/pengumuman.png" width="90" alt=""> <br>
+                                    </div>
+                                    <div class="row" style="margin-left: 18px; margin-right: 18px ;color: black;">
+                                        <div class="sidefont" style="margin-bottom: 5px;">
+                                            <a href="#" style="font-size: 14px !important; color:black !important;"
+                                                title="Pedoman Pelaksanaan Hari Anak Nasional (HAN) 2020"><strong>Pedoman
+                                                    Pelaksanaan Hari Anak Nasional (HAN)
+                                                    2020 </strong></a> <br>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-left: 18px; margin-right: 18px ;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11"
+                                            fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                                            <path
+                                                d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" />
+                                            <path
+                                                d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                                        </svg>
+                                        03-12-2021
+                                    </div>
+                                    <hr style="margin-top: 0;">
+                                </div>
+                                <!-- <a href="berita/index.html" class="btn btn-lg btn-primary" style="width: 100%;">Lihat
+                                    berita lainnya</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer bg-warning">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Link Terkait</h4>
+                    <ul>
+                        <li><a href="http://smkn1-sby.sch.id" target="_blank" class="footer-link">Website SMKN 1
+                                Lahat</a></li>
+                        <li><a href="http://bkk.smkn1-sby.sch.id" target="_blank" class="footer-link">Bursa Kerja
+                                Khusus</a></li>
+                        <li><a href="http://smkn1-sby.sch.id" target="_blank" class="footer-link">Lembaga
+                                Sertifikasi
+                                Profesi</a></li>
+                        <li><a href="http://itclub.smkn1-sby.sch.id" target="_blank" class="footer-link">IT Club
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h4>Kontak Jurusan</h4>
+                    <ul>
+                        <li>Program Studi Rekayasa Perangkat Lunak</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                                class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                            </svg> +628000000</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                                class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1h-4z" />
+                            </svg> 031 - 8292038</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="{{asset('assets/front-end')}}/assets/custom/app.js"></script>
+    <script src="{{asset('assets/front-end')}}/assets/custom/flickity.pkgd.min.js"></script>
+    <script src="{{asset('assets/front-end')}}/assets/custom/owl.carousel.min.js"></script>
+    <script sr="{{asset('assets/front-end')}}/assets/custom/custom.js"></script>
+
+</body>
+
+</html>

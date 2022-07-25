@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <link rel="stylesheet" href="assets/custom/app.css">
+    <link rel="stylesheet" href="assets/custom/custom.css">
+    <link rel="stylesheet" href="assets/custom/flickity.min.css">
+    <link rel="stylesheet" href="assets/custom/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/custom/owl.theme.default.min.css">
+    <style>
+        .carousel-cell {
+            width: 66%;
+            height: 200px;
+            margin-right: 10px;
+            background: #8C8;
+            border-radius: 5px;
+            counter-increment: gallery-cell;
+        }
+
+        /* cell number */
+        .carousel-cell:before {
+            display: block;
+            text-align: center;
+            content: counter(gallery-cell);
+            line-height: 400px;
+            font-size: 80px;
+            color: white;
+        }
+
+        .carousel-cell {
+            width: 33%;
+            height: 400px;
+            margin-right: 10px;
+            background: #8C8;
+            border-radius: 5px;
+            counter-increment: gallery-cell;
+        }
+
+        /* cell number */
+        .carousel-cell:before {
+            display: block;
+            text-align: center;
+            content: counter(gallery-cell);
+            line-height: 400px;
+            font-size: 80px;
+            color: white;
+        }
+
+        .carousel-cell-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+        }
+    </style>
+    <style>
+        .navbar-default {
+            background-image: linear-gradient(to bottom, #1976D2 0%, #64B5F6 100%);
+            background-repeat: repeat-x;
+        }
+
+        .footer {
+            background-image: linear-gradient(to bottom, #1976D2 0%, #64B5F6 100%);
+            background-repeat: repeat-x;
+        }
+
+        .title {
+            background-image: linear-gradient(to bottom, #1976D2 0%, #64B5F6 100%);
+            background-repeat: repeat-x;
+        }
+
+        .subtitle {
+            border-left-color: #5cb1f7;
+        }
+
+        .nav.dinamis li {
+            background-image: linear-gradient(to bottom, #1976D2 0%, #64B5F6 100%);
+            background-repeat: repeat-x;
+            margin: 0px 10px;
+        }
+
+        .nav.dinamis li.active {
+            background-image: linear-gradient(to bottom, #003049 0%, #003049 100%);
+            background-repeat: repeat-x;
+        }
+
+        .nav.dinamis li a {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .nav>li>a:focus,
+        .nav>li>a:hover {
+            background-color: #003049;
+        }
+
+        .pagination>.active>a,
+        .pagination>.active>a:focus,
+        .pagination>.active>a:hover,
+        .pagination>.active>span,
+        .pagination>.active>span:focus,
+        .pagination>.active>span:hover {
+            background-color: #E6D300;
+            border-color: #E6D300;
+        }
+
+        .pagination>li>a,
+        .pagination>li>span {
+            color: #E6D300;
+        }
+
+        .panel-body.dinamis {
+            background-color: #E6D300;
+        }
+    </style>
+
+    <title>Teknik Komputer dan Informatika</title>
+</head>
+
+<body style="background-color: #d8dbdb83;">
+    <nav class="navbar navbar-default" style="border-radius: 0">
+        <div class="container" style="position: relative">
+            <div class="navbar-header">
+                <a class="navbar-brand" style="padding-top: 0px;" href="http://tkj.smkn1-sby.sch.id"><img
+                        src="http://tkj.smkn1-sby.sch.id/storage/settings/images//Nqf0X7QEaCIZGzwOQpBahnZEN439H4mKC5lPxMbu.png"
+                        alt="LOGO" class="img-responsive pad img-small"></a>
+            </div>
+            <div class="navbar-right right-bottom">
+                <div class="navbar-form">
+                    <form action="http://tkj.smkn1-sby.sch.id/pencarian" method="GET">
+                        <input type="hidden" name="_token" value="oLA5aXtga47WpKVBkPk2YEi2CP7z50cq2wn3eRPP">
+                        <input name="keywords" type="text" placeholder="Cari.." class="form-control">
+                        <button type="submit" class="btn btn-dark"><svg xmlns="http://www.w3.org/2000/svg" width="12"
+                                height="12" fill="currentColor" class="bi bi-search" viewBox="0 0 16 14">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg></button>
+                    </form>
+                    <button type="button" class="navbar-toggle collapsed btn btn-dark" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-list" viewBox="0 0 16 11">
+                            <path fill-rule="evenodd"
+                                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="panel bagi">
+            <div class="panel-body">
+
+
+                <nav class="navbar center">
+                    <div class="navbar-inner">
+                        <div class="collapse navbar-collapse p0" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav dinamis">
+                                <li class=""><a href="index.html">Beranda</a></li>
+                                <li class=""><a href="jurusan.html">Tentang Jurusan</a></li>
+                                <li class=""><a href="guru.html">Guru</a></li>
+                                <li class="active"><a href="murid.html">Murid</a></li>
+                                <li class=""><a href="prestasi/index.html">Prestasi</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </nav>
+                <div class="row">
+
+                    <br />
+                    <div class="panel panel-default">
+                        <h3 class="title"><strong>Daftar Murid</strong></h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>NO</th>
+                                    <th>NAMA</th>
+                                    <th>KELAS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Ega Angga Saputra</td>
+                                    <td>12 RPL</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Muhammad Fadli</td>
+                                    <td>12 RPL</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Fadli Zaldi Al-Idrus</td>
+                                    <td>12 RPL</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Lord Dicky</td>
+                                    <td>12 RPl</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Rifaldi Sijabat</td>
+                                    <td>12 RPL</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Muhammad Frendy Tegar</td>
+                                    <td>12 RPl</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>Daffa Gilang Ramadhan</td>
+                                    <td>12 RPL</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="panel-body">
+                            <br>
+                            <div class="carousel" data-flickity='{"imagesLoaded": true,"contain": true}'>
+                                <div class="carousel-cell">
+                                    <img class="carousel-cell-image"
+                                        src="http://tkj.smkn1-sby.sch.id/storage/images/teachers/SC9pxSsaWZkCCwqIen5uCQ6rD2KM3DurgunB0PCf.jpeg" />
+                                    <div class="caption">
+                                        <h4>Suratman, S.ST</h4>
+                                    </div>
+                                </div>
+                                <div class="carousel-cell">
+                                    <img class="carousel-cell-image"
+                                        src="http://tkj.smkn1-sby.sch.id/storage/images/teachers/WH0jg9YuLLICjTa1mQh6jgsuEn5JdD8aL0PcBKMx.jpeg" />
+                                    <div class="caption">
+                                        <h4>Slamet Siswo Wibowo, S.Pd.</h4>
+                                    </div>
+                                </div>
+                                <div class="carousel-cell">
+                                    <img class="carousel-cell-image"
+                                        src="http://tkj.smkn1-sby.sch.id/storage/images/teachers/dqYMV2LJzpShInDId7bHRYukhlqKCwH9HmKyl4t7.jpeg" />
+                                    <div class="caption">
+                                        <h4>Yektiono, S.Pd, S.ST</h4>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <br />
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer bg-warning">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Link Terkait</h4>
+                    <ul>
+                        <li><a href="http://smkn1-sby.sch.id" target="_blank" class="footer-link">Website SMKN 1
+                                Lahat</a></li>
+                        <li><a href="http://bkk.smkn1-sby.sch.id" target="_blank" class="footer-link">Bursa Kerja
+                                Khusus</a></li>
+                        <li><a href="http://smkn1-sby.sch.id" target="_blank" class="footer-link">Lembaga Sertifikasi
+                                Profesi</a></li>
+                        <li><a href="http://itclub.smkn1-sby.sch.id" target="_blank" class="footer-link">IT Club</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h4>Kontak Jurusan</h4>
+                    <ul>
+                        <li>Program Studi Rekayasa Perangkat Lunak</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                                class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                            </svg> +628000000</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor"
+                                class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1h-4z" />
+                            </svg> 031 - 8292038</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="assets/custom/app.js"></script>
+    <script src="assets/custom/flickity.pkgd.min.js"></script>
+    <script src="assets/custom/owl.carousel.min.js"></script>
+    <script sr="assets/custom/custom.js"></script>
+
+
+</body>
+
+</html>
