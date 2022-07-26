@@ -9,7 +9,7 @@ Dashboard
 
         <!-- Info boxes -->
         <div class="row">
-            <div class="col-lg-3 col-3">
+            <div class="col-lg-6 col-3">
                 <div class="small-box bg-info">
                     <div class="inner">
                     <h3>Jumlah Guru</h3>
@@ -25,7 +25,7 @@ Dashboard
                 </div>
             </div>
 
-            <div class="col-lg-3 col-3">
+            <div class="col-lg-6 col-3">
                 <!-- small card -->
                 <div class="small-box bg-success">
                   <div class="inner">
@@ -42,7 +42,7 @@ Dashboard
                 </div>
             </div>
 
-            <div class="col-lg-3 col-3">
+            <div class="col-lg-6 col-3">
                 <!-- small card -->
                 <div class="small-box bg-danger">
                   <div class="inner">
@@ -59,7 +59,7 @@ Dashboard
                 </div>
             </div>
 
-            <div class="col-lg-3 col-3">
+            <div class="col-lg-6 col-3">
                 <!-- small card -->
                 <div class="small-box bg-warning">
                   <div class="inner">
@@ -75,8 +75,6 @@ Dashboard
                   </a>
                 </div>
             </div>
-
-    
 
 
             <!-- /.info-box-content -->

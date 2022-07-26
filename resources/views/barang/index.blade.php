@@ -37,6 +37,7 @@
             <th>Kondisi</th>
             <th>Tempat Barang</th>  
             <th>Gambar</th>
+            <th>Barcode</th>
             <th>Aksi</th>
           </tr>
         </thead>
@@ -52,6 +53,7 @@
             <td>{{$row->tempat_barang}}</td>
             {{-- <td><img src="{{asset('assets/featured_images/'.$row->image)}}" width="50" height="50"></td> --}}
             <td><a href="{{asset('assets/featured_images/'.$row->image)}}"><img src="{{asset('assets/featured_images/'.$row->image)}}" width="50" height="50"></a> </td>
+            <td><a href="{{url('barang/scanbarang/'.$row->id)}}" class="btn btn-info">Code QR</a></td>
             <td>
               <a href="{{url('barang/edit/'.$row->id)}}" class="btn btn-info">Edit</a>
               <a href="{{url('barang/delete/'.$row->id)}}" class="btn btn-danger delete" onclick="return confirm('Apakah anda yakin mau menghapusnya?')">Delete</a> 

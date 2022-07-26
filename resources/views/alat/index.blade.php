@@ -2,10 +2,8 @@
 @section('title') Tabel Barang RPL @endsection
 @section('konten')
 
-@push('css')
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    
-@endpush
 
 <div class="container">
   <div class="card">
@@ -38,6 +36,7 @@
             <th>Kondisi</th>
             <th>Tempat Barang</th>  
             <th>Gambar</th>
+            <th>Barcode</th>
             <th>Aksi</th>
           </tr>
         </thead>
@@ -53,6 +52,7 @@
             <td>{{$row->tempat_barang}}</td>
             {{-- <td><img src="{{asset('assets/featured_images/'.$row->image)}}" width="50" height="50"></td> --}}
             <td><a href="{{asset('assets/featured_images/'.$row->image)}}"><img src="{{asset('assets/featured_images/'.$row->image)}}" width="50" height="50"></a> </td>
+            <td><a href="{{url('alat/scan/'.$row->id)}}" class="btn btn-info">Code QR</a></td>
             <td>
               <a href="{{url('alat/edit/'.$row->id)}}" class="btn btn-info">Edit</a>
               <a href="{{url('alat/delete/'.$row->id)}}" class="btn btn-danger delete" onclick="return confirm('Apakah anda yakin mau menghapusnya?')">Delete</a> 

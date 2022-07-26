@@ -37,7 +37,7 @@
             <th>Jenis Kelamin</th>
             <th>Tempat Lahir</th>
             <th>Tanggal Lahir</th>
-            <th>Alamat</th>  
+            <th>Alamat</th> 
             <th>Aksi</th>
           </tr>
         </thead>

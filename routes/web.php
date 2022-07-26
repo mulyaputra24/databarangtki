@@ -71,6 +71,8 @@ Route::get('alat/delete/{id}','AlatController@delete')->name('delete');
 Route::post('alat/update/{id}','AlatController@update');
 Route::get('alat/create','AlatController@create');
 Route::post('alat/store','AlatController@store');
+Route::get('alat/scan/{id}','ScanController@scan')->name('scan');
+Route::get('/print_scan/{id}','ScanController@print');
 
 //CRUD Barang
 Route::get('barang/index','BarangController@index');
@@ -79,13 +81,19 @@ Route::get('barang/delete/{id}','BarangController@delete');
 Route::post('barang/update/{id}','BarangController@update');
 Route::get('barang/create','BarangController@create');
 Route::post('barang/store','BarangController@store');
+Route::get('barang/scanbarang/{id}','ScanBarangController@scanbarang')->name('scanbarang');
+Route::get('/print_scan_barang/{id}','ScanBarangController@print');
 
 Route::get('/exportpdfguru','GuruController@exportpdfguru')->name('exportpdfguru');
 Route::get('/exportpdfsiswa','SiswaController@exportpdfsiswa')->name('exportpdfsiswa');
 Route::get('/exportpdfrpl','AlatController@exportpdfrpl')->name('exportpdfrpl');
 Route::get('/exportpdftkj','BarangController@exportpdftkj')->name('exportpdftkj');
 
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
 
