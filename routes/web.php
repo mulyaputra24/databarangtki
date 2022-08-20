@@ -73,6 +73,7 @@ Route::get('alat/create','AlatController@create');
 Route::post('alat/store','AlatController@store');
 Route::get('alat/scan/{id}','ScanController@scan')->name('scan');
 Route::get('/print_scan/{id}','ScanController@print');
+Route::get('alat/info/{id}','InfoController@info')->name('info');
 
 //CRUD Barang
 Route::get('barang/index','BarangController@index');
@@ -83,6 +84,7 @@ Route::get('barang/create','BarangController@create');
 Route::post('barang/store','BarangController@store');
 Route::get('barang/scanbarang/{id}','ScanBarangController@scanbarang')->name('scanbarang');
 Route::get('/print_scan_barang/{id}','ScanBarangController@print');
+Route::get('barang/infobarang/{id}','InfoBarangController@info')->name('infobarang');
 
 Route::get('/exportpdfguru','GuruController@exportpdfguru')->name('exportpdfguru');
 Route::get('/exportpdfsiswa','SiswaController@exportpdfsiswa')->name('exportpdfsiswa');

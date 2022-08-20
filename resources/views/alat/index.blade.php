@@ -36,6 +36,7 @@
             <th>Kondisi</th>
             <th>Tempat Barang</th>  
             <th>Gambar</th>
+            <th>Info Detail</th>
             <th>Barcode</th>
             <th>Aksi</th>
           </tr>
@@ -51,11 +52,12 @@
             <td>{{$row->kondisi}}</td>
             <td>{{$row->tempat_barang}}</td>
             {{-- <td><img src="{{asset('assets/featured_images/'.$row->image)}}" width="50" height="50"></td> --}}
-            <td><a href="{{asset('assets/featured_images/'.$row->image)}}"><img src="{{asset('assets/featured_images/'.$row->image)}}" width="50" height="50"></a> </td>
-            <td><a href="{{url('alat/scan/'.$row->id)}}" class="btn btn-info">Code QR</a></td>
+            <td><a href="{{asset('assets/featured_images/'.$row->image)}}" title="Gambar"><img src="{{asset('assets/featured_images/'.$row->image)}}" width="50" height="50"></a> </td>
+            <td><center><a href="{{url('alat/info/'.$row->id)}}" title="Detail Info" class="btn btn-info"> <i class="fas fa-info-circle" style="font-size:24px"></i></a></center></td>
+            <td><center><a href="{{url('alat/scan/'.$row->id)}}" title="QR Code" class="btn btn-info"> <i class="fa fa-qrcode" style="font-size:25px"></i> </a></center></td>
             <td>
-              <a href="{{url('alat/edit/'.$row->id)}}" class="btn btn-info">Edit</a>
-              <a href="{{url('alat/delete/'.$row->id)}}" class="btn btn-danger delete" onclick="return confirm('Apakah anda yakin mau menghapusnya?')">Delete</a> 
+              <a href="{{url('alat/edit/'.$row->id)}}" title="Edit" class="btn btn-info" > <i class="fa fa-edit" style="font-size:24px"></i> </a>
+              <a href="{{url('alat/delete/'.$row->id)}}" title="Hapus" class="btn btn-danger delete" onclick="return confirm('Apakah anda yakin mau menghapusnya?')"> <i class="fa fa-trash" style="font-size:25px"></i> </a> 
             </td>
           </tr>
           @endforeach

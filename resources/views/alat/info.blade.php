@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Info Barang RPL</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.css">
 
   <!-- Google Font: Source Sans Pro -->
@@ -33,26 +33,25 @@
         <div class="card">
             <div class="card-header">
                 <div class="card-title">
-                    Detail Code
+                    Detail Barang RPL
                 </div>
             </div>
             <div class="card-body">
-                <div class="visible-print text-center">
-                    {{-- <img src="data:image/png;base64, {{ base64_encode(QrCode::format('png')->merge(public_path('assets/dist/img/logo-smk.png'),0.3, true)->generate('localhost:8000/print_scan/'.$alat->id)) }}">
-                     --}}
-                    {!! QrCode::size(400)->eye('circle')->backgroundColor(255, 0, 0, 25)->generate('localhost:8000/print_scan/'.$alat->id); !!}
-                    <p>Scan me to return to the original page.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
+                <label> Nama Barang  : {{$alat->nama_barang}}</label> <br>
+                <label> Type Barang  : {{$alat->type}}</label> <br>
+                <label> Jumlah Barang  : {{$alat->jumlah_barang}}</label> <br>
+                <label> Tahun Perolehan  : {{$alat->tahun_barang}}</label> <br>
+                <label> Kondisi       : {{$alat->kondisi}}</label> <br>
+                <label> Tempat Barang : {{$alat->tempat_barang}}</label> <br>
+                <label> Gambar Barang  : <a href="{{asset('assets/featured_images/'.$alat->image)}}"><img src="{{asset('assets/featured_images/'.$alat->image)}}" width="80" height="80"></a></label> <br>
 
+            </div>
+
+        </div>
+       
+      </div>
+</body>
 </html>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-
-
-

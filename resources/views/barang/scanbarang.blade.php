@@ -39,6 +39,7 @@
             <div class="card-body">
                 <div class="visible-print text-center">
                     {!! QrCode::size(400)->generate('localhost:8000/print_scan_barang/'.$barang->id); !!}
+                    
                     <p>Scan me to return to the original page.</p>
                 </div>
             </div>
